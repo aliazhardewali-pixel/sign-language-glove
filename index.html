@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Language Translator Glove — University of Duhok</title>
+<meta name="description" content="A wearable glove that reads hand gestures and turns them into text on a phone and spoken audio. Biomedical Engineering mini project, University of Duhok, exhibited at MEDICO 2026.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sign Language Translator Glove">
+<meta property="og:description" content="Five flex sensors, a motion sensor and an Arduino Nano turn hand gestures into text and speech. Built at the University of Duhok.">
+<meta property="og:image" content="assets/img/glove-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+
+    <p class="eyebrow">University of Duhok &middot; College of Engineering &middot; Biomedical Engineering</p>
+
+    <h1>Sign Language<br>Translator Glove</h1>
+
+    <p class="lede">
+      A wearable glove that reads the shape of your hand and turns it into words —
+      written on a phone, and spoken out loud.
+    </p>
+
+    <!-- ---- Signature element: the decoder ---- -->
+    <section class="decoder" aria-labelledby="dec-h">
+      <h2 id="dec-h" class="decoder-title">Pick a sign. See what the glove sees.</h2>
+
+      <div class="mode-switch" role="tablist" aria-label="Recognition mode">
+        <button role="tab" id="tab-word" aria-selected="true" aria-controls="chips" class="mode on" data-mode="word">Word mode</button>
+        <button role="tab" id="tab-letter" aria-selected="false" aria-controls="chips" class="mode" data-mode="letter">Letter mode</button>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="Recognized signs"></div>
+
+      <div class="readout" id="readout" aria-live="polite">
+        <div class="readout-word">
+          <p class="r-en" id="r-en">Hello</p>
+          <p class="r-ku" id="r-ku" lang="ku">Silav</p>
+          <p class="r-meta" id="r-meta">Greeting &middot; sent as text and spoken aloud</p>
+        </div>
+        <div class="readout-hand">
+          <p class="r-label">Flex sensor reading</p>
+          <div class="fingers" id="fingers"></div>
+          <p class="r-note" id="r-note"></p>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        Simplified illustration of finger extension per sign — not recorded sensor output.
+      </p>
+    </section>
+
+    <p class="hero-foot">
+      Exhibited at <strong>MEDICO 2026</strong>, Erbil &middot; In academic partnership with THM, Germany
+    </p>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ VIDEO ============ -->
+<section class="band" aria-labelledby="video-h">
+  <div class="wrap">
+    <h2 id="video-h">The glove in use</h2>
+    <!--
+      TO ADD THE VIDEO:
+      Replace the whole .video-placeholder div below with:
+
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                title="Sign Language Translator Glove demonstration"
+                loading="lazy" allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    -->
+    <div class="video-placeholder">
+      <p><strong>Demonstration video</strong></p>
+      <p>Paste the YouTube embed here — see the comment in index.html.</p>
+    </div>
+    <p class="cap">A full run through Word Mode and Letter Mode, with audio output.</p>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="band alt" aria-labelledby="why-h">
+  <div class="wrap narrow">
+    <h2 id="why-h">Why we built it</h2>
+    <p>
+      A deaf or speech-impaired person can sign fluently and still not be understood, because
+      the person across from them never learned to sign. That happens at a hospital reception,
+      in a classroom, at a government office — ordinary places, every day.
+    </p>
+    <p>
+      Interpreters are not always available and not always wanted. The gap is usually small:
+      a handful of words, said quickly, to someone who only needs to understand this once.
+      We wanted to close that gap with something a person can simply wear.
+    </p>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="band" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 id="how-h">How it works</h2>
+    <p class="sub">The signal starts as a bend in a finger and ends as a word in two places at once.</p>
+
+    <ol class="chain">
+      <li>
+        <span class="chain-tag">Hand</span>
+        <h3>The gesture</h3>
+        <p>Fingers bend. The wrist turns. Both carry meaning.</p>
+      </li>
+      <li>
+        <span class="chain-tag">Sense</span>
+        <h3>Five flex sensors + MPU9250</h3>
+        <p>Each flex sensor changes resistance as the finger curls. The MPU9250 reports
+           how the hand is tilted and how it is moving.</p>
+      </li>
+      <li>
+        <span class="chain-tag">Decide</span>
+        <h3>Arduino Nano</h3>
+        <p>Every sensor value is checked against a calibrated range. When all of them fall
+           inside the range for one gesture, that gesture is recognized.</p>
+      </li>
+      <li class="split">
+        <span class="chain-tag">Output</span>
+        <h3>Two channels at once</h3>
+        <div class="branches">
+          <p><strong>Seen —</strong> HM-10 Bluetooth Low Energy sends the text to a smartphone.</p>
+          <p><strong>Heard —</strong> a DFPlayer Mini plays the matching audio file through a speaker.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="note">
+      <h3>Why a motion sensor, and not just the fingers</h3>
+      <p>
+        <em>Hello</em>, <em>Stop</em> and <em>Wait</em> are all made with an open hand. To five flex
+        sensors they are the same reading. The MPU9250 is what separates them — orientation and
+        motion carry the difference that the fingers do not.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODES ============ -->
+<section class="band alt" aria-labelledby="modes-h">
+  <div class="wrap">
+    <h2 id="modes-h">Two modes, no buttons</h2>
+    <p class="sub">
+      The glove switches between modes with a gesture of its own, so the hand never has to
+      leave the conversation to press something. A further gesture clears the text.
+    </p>
+
+    <div class="tables">
+      <div class="tbl">
+        <h3>Word mode</h3>
+        <table>
+          <caption class="vh">Recognized words with Kurdish output and meaning</caption>
+          <thead><tr><th scope="col">English</th><th scope="col">Kurdish</th><th scope="col">Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>Hello</td><td lang="ku">Silav</td><td>Greeting</td></tr>
+            <tr><td>Yes</td><td lang="ku">Bele</td><td>Affirmative</td></tr>
+            <tr><td>No</td><td lang="ku">Nexer</td><td>Negative</td></tr>
+            <tr><td>Stop</td><td lang="ku">Raweste</td><td>Request to stop</td></tr>
+            <tr><td>Wait</td><td lang="ku">Cavere Be</td><td>Request to wait</td></tr>
+            <tr><td>How are you?</td><td lang="ku">Çawa yî?</td><td>Asking after someone</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tbl">
+        <h3>Letter mode</h3>
+        <p class="tbl-note">Six American Sign Language letters, shown in sequence so short words can be spelled.</p>
+        <div class="letters">
+          <span>D</span><span>E</span><span>L</span><span>V</span><span>W</span><span>Y</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HARDWARE ============ -->
+<section class="band" aria-labelledby="hw-h">
+  <div class="wrap">
+    <h2 id="hw-h">What is inside</h2>
+    <p class="sub">Everything except the sensors sits in a clear enclosure strapped to the forearm.</p>
+
+    <table class="parts">
+      <caption class="vh">Components used in the glove</caption>
+      <thead><tr><th scope="col">Component</th><th scope="col">What it does</th></tr></thead>
+      <tbody>
+        <tr><td>Arduino Nano</td><td>Reads every sensor and runs the recognition logic</td></tr>
+        <tr><td>Flex sensor &times; 5 <span class="dim">(5.59 cm)</span></td><td>One per finger — resistance changes with bend angle</td></tr>
+        <tr><td>MPU9250 <span class="dim">(9-axis)</span></td><td>Hand orientation and acceleration, over I<sup>2</sup>C</td></tr>
+        <tr><td>HM-10 Bluetooth LE</td><td>Sends the recognized text to a smartphone</td></tr>
+        <tr><td>DFPlayer Mini + speaker</td><td>Speaks the recognized word aloud</td></tr>
+        <tr><td>MicroSD card</td><td>Holds the audio files for the DFPlayer</td></tr>
+        <tr><td>10 k&Omega; resistor &times; 5</td><td>Voltage dividers so the Nano can read the flex sensors</td></tr>
+        <tr><td>Li-ion battery <span class="dim">(3.7 V, 700 mAh)</span></td><td>Around seven hours of use per charge</td></tr>
+        <tr><td>MT3608 boost converter</td><td>Steps the battery up to a steady 5 V</td></tr>
+        <tr><td>Power switch, USB-C port</td><td>On/off and charging</td></tr>
+        <tr><td>Right-hand glove</td><td>Carries the sensors and the wiring</td></tr>
+      </tbody>
+    </table>
+
+    <figure class="schem">
+      <picture>
+        <source srcset="assets/img/schematic.webp" type="image/webp">
+        <img src="assets/img/schematic.png" loading="lazy" width="2000" height="1403"
+             alt="Circuit schematic showing the Arduino Nano connected to five flex sensors through voltage dividers, an MPU9250 over I2C, an HM-10 Bluetooth module, and a DFPlayer Mini driving a speaker, powered by a 3.7 volt battery through a boost converter.">
+      </picture>
+      <figcaption>Full circuit, drawn in EasyEDA.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CHALLENGES ============ -->
+<section class="band alt" aria-labelledby="ch-h">
+  <div class="wrap">
+    <h2 id="ch-h">What was hard</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>Getting the parts at all</h3>
+        <p>Most components were not sold in Duhok, so they were ordered from Baghdad. Every
+           damaged part meant waiting again, which shaped how carefully we handled the build.</p>
+      </article>
+      <article class="card">
+        <h3>The thumb refused to behave</h3>
+        <p>The thumb sensor sat and bent differently from the other four and never matched their
+           readings. It ended up with its own separate calibration.</p>
+      </article>
+      <article class="card">
+        <h3>Finding the thresholds</h3>
+        <p>Small changes in hand position moved the sensor values. Settling on ranges that held
+           up across repeated attempts took far more testing than writing the code did.</p>
+      </article>
+      <article class="card">
+        <h3>Making it wearable</h3>
+        <p>The glove and the enclosure went through several revisions before the sensors sat in
+           the right places and the whole thing was still comfortable to wear.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="band" aria-labelledby="gal-h">
+  <div class="wrap">
+    <h2 id="gal-h">The prototype</h2>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="band alt" aria-labelledby="res-h">
+  <div class="wrap narrow">
+    <h2 id="res-h">Where it got to</h2>
+    <ul class="results">
+      <li>Six words and phrases, six ASL letters, tested repeatedly by both of us.</li>
+      <li>Text appears on the phone almost immediately after the gesture finishes.</li>
+      <li>The Bluetooth link held through every testing and demonstration session.</li>
+      <li>About seven hours of running time on one charge.</li>
+      <li>Adding the MPU9250 visibly reduced confusion between gestures with similar finger positions.</li>
+    </ul>
+    <p class="honest">
+      We have not measured a formal recognition accuracy figure, so we are not claiming one.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FUTURE ============ -->
+<section class="band" aria-labelledby="next-h">
+  <div class="wrap narrow">
+    <h2 id="next-h">What comes next</h2>
+    <ul class="next">
+      <li>A trained model in place of fixed thresholds, so the glove adapts to each wearer</li>
+      <li>The full ASL alphabet and a wider vocabulary</li>
+      <li>A dedicated mobile app instead of a general Bluetooth terminal</li>
+      <li>More output languages — Arabic and German alongside English and Kurdish</li>
+      <li>A custom PCB to shrink the electronics down</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="band alt" aria-labelledby="team-h">
+  <div class="wrap">
+    <h2 id="team-h">Who built it</h2>
+    <div class="team">
+      <div class="member"><p class="name">Abdulqader Masood</p><p class="role">Fourth-year Biomedical Engineering</p></div>
+      <div class="member"><p class="name">Zaid Mahdi</p><p class="role">Fourth-year Biomedical Engineering</p></div>
+      <div class="member sup"><p class="name">Dr. Soleen Jaladat Al-Sofi</p><p class="role">Supervisor — the project was her suggestion</p></div>
+    </div>
+    <p class="contact">
+      <a href="mailto:abdulkadeermasood@gmail.com">abdulkadeermasood@gmail.com</a>
+      <span class="sep">&middot;</span>
+      <a href="tel:+9647501466457">+964 750 146 6457</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logos">
+      <img src="assets/img/logo-uod.png" alt="University of Duhok" loading="lazy" width="250" height="250">
+      <img src="assets/img/logo-thm.png" alt="Technische Hochschule Mittelhessen" loading="lazy" width="571" height="190">
+    </div>
+    <p class="fine">
+      Mini Project 2025–2026 &middot; Department of Biomedical Engineering,
+      College of Engineering, University of Duhok<br>
+      Exhibited at MEDICO 2026, Erbil
+    </p>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Close photo viewer">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
+  <figure class="lb-fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
