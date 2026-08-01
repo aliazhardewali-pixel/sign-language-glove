@@ -138,8 +138,8 @@ PHOTOS.forEach((p, i) => {
   b.setAttribute('aria-label', 'Open photo ' + (i + 1) + ': ' + p.cap);
   b.innerHTML =
     `<picture>
-       <source srcset="assets/img/${p.file}.webp" type="image/webp">
-       <img src="assets/img/${p.file}.jpg" loading="lazy" alt="${p.alt}">
+       <source srcset="${p.file}.webp" type="image/webp">
+       <img src="${p.file}.jpg" loading="lazy" alt="${p.alt}">
      </picture>`;
   b.addEventListener('click', () => openLB(i));
   gallery.appendChild(b);
@@ -156,7 +156,7 @@ let lastFocus = null;
 
 function paintLB(){
   const p = PHOTOS[lbIndex];
-  lbImg.src = `assets/img/${p.file}.jpg`;
+  lbImg.src = `${p.file}.jpg`;
   lbImg.alt = p.alt;
   lbCap.textContent = p.cap;
 }
