@@ -27,7 +27,7 @@
 
     <p class="eyebrow">University of Duhok &middot; College of Engineering &middot; Biomedical Engineering</p>
 
-    <h1>Sign Language<br>Translator Glove</h1>
+    <h1>Sign Language <br>Translator Glove</h1>
 
     <p class="lede">
       A wearable glove that reads the shape of your hand and turns it into words —
@@ -36,7 +36,7 @@
 
     <!-- ---- Signature element: the decoder ---- -->
     <section class="decoder" aria-labelledby="dec-h">
-      <h2 id="dec-h" class="decoder-title">Pick a sign. See what the glove sees.</h2>
+      <h2 id="dec-h" class="decoder-title">Pick a sign to see what the glove says.</h2>
 
       <div class="mode-switch" role="tablist" aria-label="Recognition mode">
         <button role="tab" id="tab-word" aria-selected="true" aria-controls="chips" class="mode on" data-mode="word">Word mode</button>
@@ -48,19 +48,10 @@
       <div class="readout" id="readout" aria-live="polite">
         <div class="readout-word">
           <p class="r-en" id="r-en">Hello</p>
-          <p class="r-ku" id="r-ku" lang="ku">Silav</p>
+          <p class="r-ku" id="r-ku">Silav</p>
           <p class="r-meta" id="r-meta">Greeting &middot; sent as text and spoken aloud</p>
         </div>
-        <div class="readout-hand">
-          <p class="r-label">Flex sensor reading</p>
-          <div class="fingers" id="fingers"></div>
-          <p class="r-note" id="r-note"></p>
-        </div>
       </div>
-
-      <p class="disclaimer">
-        Simplified illustration of finger extension per sign — not recorded sensor output.
-      </p>
     </section>
 
     <p class="hero-foot">
@@ -90,7 +81,6 @@
       <p><strong>Demonstration video</strong></p>
       <p>Paste the YouTube embed here — see the comment in index.html.</p>
     </div>
-    <p class="cap">A full run through Word Mode and Letter Mode, with audio output.</p>
   </div>
 </section>
 
@@ -144,15 +134,6 @@
         </div>
       </li>
     </ol>
-
-    <div class="note">
-      <h3>Why a motion sensor, and not just the fingers</h3>
-      <p>
-        <em>Hello</em>, <em>Stop</em> and <em>Wait</em> are all made with an open hand. To five flex
-        sensors they are the same reading. The MPU9250 is what separates them — orientation and
-        motion carry the difference that the fingers do not.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -177,7 +158,7 @@
             <tr><td>No</td><td lang="ku">Nexer</td><td>Negative</td></tr>
             <tr><td>Stop</td><td lang="ku">Raweste</td><td>Request to stop</td></tr>
             <tr><td>Wait</td><td lang="ku">Cavere Be</td><td>Request to wait</td></tr>
-            <tr><td>How are you?</td><td lang="ku">Çawa yî?</td><td>Asking after someone</td></tr>
+            <tr><td>How are you?</td><td>&ndash;</td><td>Asking after someone</td></tr>
           </tbody>
         </table>
       </div>
@@ -220,7 +201,7 @@
     <figure class="schem">
       <picture>
         <source srcset="schematic.webp" type="image/webp">
-        <img src="schematic.png" loading="lazy" width="2000" height="1403"
+        <img src="schematic.png" loading="lazy" width="1600" height="975"
              alt="Circuit schematic showing the Arduino Nano connected to five flex sensors through voltage dividers, an MPU9250 over I2C, an HM-10 Bluetooth module, and a DFPlayer Mini driving a speaker, powered by a 3.7 volt battery through a boost converter.">
       </picture>
       <figcaption>Full circuit, drawn in EasyEDA.</figcaption>
@@ -239,19 +220,10 @@
            damaged part meant waiting again, which shaped how carefully we handled the build.</p>
       </article>
       <article class="card">
-        <h3>The thumb refused to behave</h3>
-        <p>The thumb sensor sat and bent differently from the other four and never matched their
-           readings. It ended up with its own separate calibration.</p>
-      </article>
-      <article class="card">
-        <h3>Finding the thresholds</h3>
-        <p>Small changes in hand position moved the sensor values. Settling on ranges that held
-           up across repeated attempts took far more testing than writing the code did.</p>
-      </article>
-      <article class="card">
-        <h3>Making it wearable</h3>
-        <p>The glove and the enclosure went through several revisions before the sensors sat in
-           the right places and the whole thing was still comfortable to wear.</p>
+        <h3>Soldering it all inside the box</h3>
+        <p>Fitting the Nano, the Bluetooth module, the boost converter, the battery and the
+           audio module into one small enclosure meant soldering in a very tight space, with
+           joints close together and little room to work without disturbing the ones already made.</p>
       </article>
     </div>
   </div>
@@ -265,33 +237,18 @@
   </div>
 </section>
 
-<!-- ============ RESULTS ============ -->
-<section class="band alt" aria-labelledby="res-h">
-  <div class="wrap narrow">
-    <h2 id="res-h">Where it got to</h2>
-    <ul class="results">
-      <li>Six words and phrases, six ASL letters, tested repeatedly by both of us.</li>
-      <li>Text appears on the phone almost immediately after the gesture finishes.</li>
-      <li>The Bluetooth link held through every testing and demonstration session.</li>
-      <li>About seven hours of running time on one charge.</li>
-      <li>Adding the MPU9250 visibly reduced confusion between gestures with similar finger positions.</li>
-    </ul>
-    <p class="honest">
-      We have not measured a formal recognition accuracy figure, so we are not claiming one.
-    </p>
-  </div>
-</section>
-
 <!-- ============ FUTURE ============ -->
-<section class="band" aria-labelledby="next-h">
+<section class="band alt" aria-labelledby="next-h">
   <div class="wrap narrow">
-    <h2 id="next-h">What comes next</h2>
+    <h2 id="next-h">Future improvements</h2>
     <ul class="next">
-      <li>A trained model in place of fixed thresholds, so the glove adapts to each wearer</li>
-      <li>The full ASL alphabet and a wider vocabulary</li>
-      <li>A dedicated mobile app instead of a general Bluetooth terminal</li>
-      <li>More output languages — Arabic and German alongside English and Kurdish</li>
-      <li>A custom PCB to shrink the electronics down</li>
+      <li>Support for all 26 letters of the alphabet</li>
+      <li>An AI-supported version that learns each wearer instead of using fixed thresholds</li>
+      <li>A left-hand version of the glove</li>
+      <li>Support for more spoken languages</li>
+      <li>Support for local sign languages, such as Kurdish and Arabic sign language</li>
+      <li>A custom PCB with smaller sensors, so the electronics sit flatter and lighter on the arm</li>
+      <li>A dedicated mobile app in place of a general Bluetooth terminal</li>
     </ul>
   </div>
 </section>
