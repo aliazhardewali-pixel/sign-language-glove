@@ -72,10 +72,10 @@ a:hover{ color:var(--signal); }
 .logostrip{ background:#fff; border-bottom:1px solid var(--line); }
 .logostrip .wrap{
   display:flex; align-items:center; justify-content:center;
-  gap:clamp(1.2rem,5vw,2.6rem); padding-block:1.1rem; flex-wrap:wrap;
+  gap:clamp(1.4rem,6vw,3.2rem); padding-block:1.5rem; flex-wrap:wrap;
 }
-.logostrip img{ width:auto; height:clamp(38px,9vw,54px); }
-.logostrip img[alt^="University"]{ height:clamp(44px,10.5vw,64px); }
+.logostrip img{ width:auto; height:clamp(58px,14vw,88px); }
+.logostrip img[alt^="University"]{ height:clamp(68px,16.5vw,104px); }
 
 .hero{
   background:var(--ink);
