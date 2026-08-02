@@ -79,11 +79,12 @@ a:hover{ color:var(--signal); }
   text-transform:uppercase; color:var(--steel); margin-bottom:1.5rem;
 }
 .hero h1{
-  font-size:clamp(2rem,9vw,4.8rem);
+  font-size:clamp(1.85rem,8.2vw,4.8rem);
   letter-spacing:-.03em;
   margin-bottom:.35em;
   overflow-wrap:break-word;
-  hyphens:auto;
+  hyphens:manual;
+  text-wrap:balance;
 }
 .hero h1 br{ display:none; }
 .lede{
