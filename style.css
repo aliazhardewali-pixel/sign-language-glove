@@ -275,7 +275,7 @@ footer a:hover{ color:#fff; }
 
 /* ---------- 11. RESPONSIVE ---------- */
 @media (min-width:620px){
-  .gallery{ grid-template-columns:repeat(3,1fr); }
+  .gallery{ grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); }
   .cards{ grid-template-columns:repeat(2,1fr); }
   .team{ grid-template-columns:repeat(3,1fr); }
   .branches{ grid-template-columns:1fr 1fr; }
