@@ -3,12 +3,11 @@
    Sections in this file:
      1. Tokens (colours, type)   — change colours here
      2. Base + layout
-     3. Hero
-     4. Decoder (the interactive sign picker)
+     3. Logo strip + hero
      5. Content bands
      6. Signal chain
      7. Tables
-     8. Cards / results / team
+     8. Cards / team
      9. Gallery + lightbox
     10. Footer
     11. Responsive
@@ -24,6 +23,7 @@
   --line:     #D3D8DF;   /* borders */
   --cuff:     #F2C230;   /* accent — the glove's yellow cuff */
   --signal:   #E04A2F;   /* active state only — the enclosure LED */
+  --medico:   #17B45E;   /* MEDICO 2026 only */
 
   --display: "Bricolage Grotesque", Georgia, serif;
   --body:    "Public Sans", system-ui, sans-serif;
@@ -68,15 +68,19 @@ a:hover{ color:var(--signal); }
 }
 .skip:focus{ left:0; }
 
-/* ---------- 3. HERO ---------- */
+/* ---------- 3. LOGO STRIP + HERO ---------- */
+.logostrip{ background:#fff; border-bottom:1px solid var(--line); }
+.logostrip .wrap{
+  display:flex; align-items:center; justify-content:center;
+  gap:clamp(1.2rem,5vw,2.6rem); padding-block:1.1rem; flex-wrap:wrap;
+}
+.logostrip img{ width:auto; height:clamp(38px,9vw,54px); }
+.logostrip img[alt^="University"]{ height:clamp(44px,10.5vw,64px); }
+
 .hero{
   background:var(--ink);
   color:var(--paper);
   padding-block:clamp(2.5rem,9vw,4.5rem) clamp(2.2rem,7vw,3.5rem);
-}
-.hero .eyebrow{
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--steel); margin-bottom:1.5rem;
 }
 .hero h1{
   font-size:clamp(1.85rem,8.2vw,4.8rem);
@@ -96,7 +100,7 @@ a:hover{ color:var(--signal); }
   border-top:1px solid #2B313D;
   font-size:.82rem; color:var(--steel);
 }
-.hero-foot strong{ color:var(--cuff); font-weight:600; }
+.medico{ color:var(--medico); font-weight:700; letter-spacing:.01em; }
 
 /* ---------- 5. CONTENT BANDS ---------- */
 .band{ padding-block:clamp(2.6rem,8vw,4.4rem); }
@@ -116,10 +120,9 @@ a:hover{ color:var(--signal); }
   color:var(--ink-soft);
 }
 .video-placeholder p{ margin:.2rem 0; font-size:.9rem; }
-.cap{ font-size:.85rem; color:var(--steel); margin-top:.9rem; }
 
 /* ---------- 6. SIGNAL CHAIN ---------- */
-.chain{ list-style:none; margin:0; padding:0; counter-reset:none; }
+.chain{ list-style:none; margin:0; padding:0; }
 .chain li{
   position:relative; padding:0 0 1.9rem 1.7rem;
   border-left:2px solid var(--line);
@@ -146,7 +149,6 @@ a:hover{ color:var(--signal); }
   border:1px solid var(--line); border-radius:9px; font-size:.9rem;
 }
 .band.alt .branches p{ background:var(--card); }
-
 
 /* ---------- 7. TABLES ---------- */
 .tables{ display:grid; gap:2.4rem; }
@@ -183,7 +185,7 @@ td:nth-child(1){ font-weight:600; }
 }
 figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
 
-/* ---------- 8. CARDS / RESULTS / TEAM ---------- */
+/* ---------- 8. CARDS / TEAM ---------- */
 .cards{ display:grid; gap:1rem; }
 .card{
   padding:1.2rem 1.3rem; background:var(--paper);
@@ -192,19 +194,15 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
 .card h3{ color:var(--ink); margin-bottom:.45em; }
 .card p{ margin:0; font-size:.93rem; color:var(--ink-soft); }
 
-.results, .next{ margin:0; padding:0; list-style:none; }
-.results li, .next li{
+.next{ margin:0; padding:0; list-style:none; }
+.next li{
   padding:.7rem 0 .7rem 1.5rem; position:relative;
   border-bottom:1px solid var(--line); font-size:.96rem;
 }
-.results li:last-child, .next li:last-child{ border-bottom:0; }
-.results li::before, .next li::before{
+.next li:last-child{ border-bottom:0; }
+.next li::before{
   content:""; position:absolute; left:0; top:1.28rem;
   width:7px; height:7px; border-radius:2px; background:var(--cuff);
-}
-.honest{
-  margin-top:1.4rem; font-size:.88rem; color:var(--ink-soft);
-  padding-left:.9rem; border-left:2px solid var(--signal);
 }
 
 .team{ display:grid; gap:1rem; margin-bottom:1.8rem; }
@@ -264,15 +262,16 @@ footer{
   background:var(--ink); color:var(--steel);
   padding-block:2.6rem; text-align:center;
 }
-.logos{
-  display:flex; align-items:center; justify-content:center;
-  gap:1.8rem; margin-bottom:1.5rem; flex-wrap:wrap;
+.fine{ font-size:.78rem; line-height:1.7; margin:0 0 .55rem; }
+footer a{ color:#A9B2BF; text-decoration-color:#4A5364; }
+footer a:hover{ color:#fff; }
+.credit{
+  font-size:.72rem; margin:1.1rem 0 0; color:#7E8797;
+  padding-top:.9rem; border-top:1px solid #232935;
+  display:inline-block; min-width:min(320px,80%);
 }
-.logos img{
-  height:52px; width:auto;
-  background:#fff; padding:.45rem .6rem; border-radius:7px;
-}
-.fine{ font-size:.78rem; line-height:1.7; margin:0; }
+.credit a{ color:#8A93A3; }
+.credit a:hover{ color:#A9B2BF; }
 
 /* ---------- 11. RESPONSIVE ---------- */
 @media (min-width:620px){
