@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -213,7 +213,26 @@
 <section class="band" aria-labelledby="gal-h">
   <div class="wrap">
     <h2 id="gal-h">The prototype</h2>
-    <div class="gallery" id="gallery"></div>
+    <div class="gallery" id="gallery">
+      <button type="button" class="shot" data-i="0" aria-label="Open photo 1: The complete system as worn — sensors on the hand, electronics on the forearm.">
+        <picture>
+          <source srcset="glove-01.webp?v=3" type="image/webp">
+          <img src="glove-01.jpg?v=3" loading="lazy" alt="The glove worn on a raised hand, with the clear electronics enclosure strapped to the forearm and its red power light on.">
+        </picture>
+      </button>
+      <button type="button" class="shot" data-i="1" aria-label="Open photo 2: One flex sensor per finger, wiring gathered at the wrist.">
+        <picture>
+          <source srcset="glove-03.webp?v=3" type="image/webp">
+          <img src="glove-03.jpg?v=3" loading="lazy" alt="Close view of the back of the glove showing the flex sensors running along each finger and the wiring gathered at the cuff.">
+        </picture>
+      </button>
+      <button type="button" class="shot" data-i="2" aria-label="Open photo 3: Everything is visible through the case: Nano, Bluetooth, boost converter, battery.">
+        <picture>
+          <source srcset="glove-05.webp?v=3" type="image/webp">
+          <img src="glove-05.jpg?v=3" loading="lazy" alt="The glove and enclosure seen at an angle, with the internal boards and wiring visible through the clear case.">
+        </picture>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -277,6 +296,6 @@
   <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

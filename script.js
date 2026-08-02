@@ -1,52 +1,16 @@
 /* =========================================================
    SIGN LANGUAGE TRANSLATOR GLOVE
-   Gallery + lightbox. No libraries, plain JavaScript.
-
-   To change which photos appear, edit the PHOTOS list below.
-   Each entry needs: file (no extension), alt (description for
-   screen readers), cap (caption under the photo).
+   Lightbox only. The photos themselves live in index.html,
+   so they display even if this file fails to load.
    ========================================================= */
 
-const V = '2';   // bump this number if a replaced image doesn't refresh
-
-const PHOTOS = [
-  {
-    file: 'glove-01',
-    alt:  'The glove worn on a raised hand, with the clear electronics enclosure strapped to the forearm and its red power light on.',
-    cap:  'The complete system as worn — sensors on the hand, electronics on the forearm.'
-  },
-  {
-    file: 'glove-03',
-    alt:  'Close view of the back of the glove showing the flex sensors running along each finger and the wiring gathered at the cuff.',
-    cap:  'One flex sensor per finger, wiring gathered at the wrist.'
-  },
-  {
-    file: 'glove-05',
-    alt:  'The glove and enclosure seen at an angle, with the internal boards and wiring visible through the clear case.',
-    cap:  'Everything is visible through the case: Nano, Bluetooth, boost converter, battery.'
-  }
+const CAPTIONS = [
+  'The complete system as worn — sensors on the hand, electronics on the forearm.',
+  'One flex sensor per finger, wiring gathered at the wrist.',
+  'Everything is visible through the case: Nano, Bluetooth, boost converter, battery.'
 ];
 
-/* ---------- build the gallery ---------- */
-const gallery = document.getElementById('gallery');
-
-if (gallery) {
-  PHOTOS.forEach((p, i) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'shot';
-    b.setAttribute('aria-label', 'Open photo ' + (i + 1) + ': ' + p.cap);
-    b.innerHTML =
-      '<picture>' +
-        '<source srcset="' + p.file + '.webp?v=' + V + '" type="image/webp">' +
-        '<img src="' + p.file + '.jpg?v=' + V + '" loading="lazy" alt="' + p.alt + '">' +
-      '</picture>';
-    b.addEventListener('click', () => openLB(i));
-    gallery.appendChild(b);
-  });
-}
-
-/* ---------- lightbox ---------- */
+const shots   = Array.from(document.querySelectorAll('.shot'));
 const lb      = document.getElementById('lightbox');
 const lbImg   = document.getElementById('lbImg');
 const lbCap   = document.getElementById('lbCap');
@@ -58,10 +22,10 @@ let lbIndex = 0;
 let lastFocus = null;
 
 function paintLB() {
-  const p = PHOTOS[lbIndex];
-  lbImg.src = p.file + '.jpg?v=' + V;
-  lbImg.alt = p.alt;
-  lbCap.textContent = p.cap;
+  const img = shots[lbIndex].querySelector('img');
+  lbImg.src = img.getAttribute('src');
+  lbImg.alt = img.getAttribute('alt');
+  lbCap.textContent = CAPTIONS[lbIndex] || '';
 }
 
 function openLB(i) {
@@ -80,11 +44,13 @@ function closeLB() {
 }
 
 function step(n) {
-  lbIndex = (lbIndex + n + PHOTOS.length) % PHOTOS.length;
+  lbIndex = (lbIndex + n + shots.length) % shots.length;
   paintLB();
 }
 
-if (lb) {
+if (lb && shots.length) {
+  shots.forEach((btn, i) => btn.addEventListener('click', () => openLB(i)));
+
   lbClose.addEventListener('click', closeLB);
   lbPrev.addEventListener('click', () => step(-1));
   lbNext.addEventListener('click', () => step(1));
