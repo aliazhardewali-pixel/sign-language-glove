@@ -34,26 +34,6 @@
       written on a phone, and spoken out loud.
     </p>
 
-    <!-- ---- Signature element: the decoder ---- -->
-    <section class="decoder" aria-labelledby="dec-h">
-      <h2 id="dec-h" class="decoder-title">Pick a sign to see what the glove says.</h2>
-
-      <div class="mode-switch" role="tablist" aria-label="Recognition mode">
-        <button role="tab" id="tab-word" aria-selected="true" aria-controls="chips" class="mode on" data-mode="word">Word mode</button>
-        <button role="tab" id="tab-letter" aria-selected="false" aria-controls="chips" class="mode" data-mode="letter">Letter mode</button>
-      </div>
-
-      <div class="chips" id="chips" role="group" aria-label="Recognized signs"></div>
-
-      <div class="readout" id="readout" aria-live="polite">
-        <div class="readout-word">
-          <p class="r-en" id="r-en">Hello</p>
-          <p class="r-ku" id="r-ku">Silav</p>
-          <p class="r-meta" id="r-meta">Greeting &middot; sent as text and spoken aloud</p>
-        </div>
-      </div>
-    </section>
-
     <p class="hero-foot">
       Exhibited at <strong>MEDICO 2026</strong>, Erbil &middot; In academic partnership with THM, Germany
     </p>
@@ -200,8 +180,8 @@
 
     <figure class="schem">
       <picture>
-        <source srcset="schematic.webp" type="image/webp">
-        <img src="schematic.png" loading="lazy" width="1600" height="975"
+        <source srcset="schematic.webp?v=2" type="image/webp">
+        <img src="schematic.png?v=2" loading="lazy" width="1600" height="975"
              alt="Circuit schematic showing the Arduino Nano connected to five flex sensors through voltage dividers, an MPU9250 over I2C, an HM-10 Bluetooth module, and a DFPlayer Mini driving a speaker, powered by a 3.7 volt battery through a boost converter.">
       </picture>
       <figcaption>Full circuit, drawn in EasyEDA.</figcaption>
