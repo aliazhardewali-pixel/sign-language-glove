@@ -1,72 +1,66 @@
 /* =========================================================
    SIGN LANGUAGE TRANSLATOR GLOVE
-   Lightbox only. The photos themselves live in index.html,
-   so they display even if this file fails to load.
+   Slider controls. The photos are in index.html, so they
+   display even if this file never loads.
    ========================================================= */
 
-const CAPTIONS = [
-  'The complete system as worn — sensors on the hand, electronics on the forearm.',
-  'One flex sensor per finger, wiring gathered at the wrist.',
-  'Everything is visible through the case: Nano, Bluetooth, boost converter, battery.'
-];
+const slides = document.getElementById('slides');
+const prev   = document.getElementById('sPrev');
+const next   = document.getElementById('sNext');
+const dotBox = document.getElementById('dots');
 
-const shots   = Array.from(document.querySelectorAll('.shot'));
-const lb      = document.getElementById('lightbox');
-const lbImg   = document.getElementById('lbImg');
-const lbCap   = document.getElementById('lbCap');
-const lbClose = document.getElementById('lbClose');
-const lbPrev  = document.getElementById('lbPrev');
-const lbNext  = document.getElementById('lbNext');
+if (slides) {
+  const items = Array.from(slides.querySelectorAll('.slide'));
 
-let lbIndex = 0;
-let lastFocus = null;
-
-function paintLB() {
-  const img = shots[lbIndex].querySelector('img');
-  lbImg.src = img.getAttribute('src');
-  lbImg.alt = img.getAttribute('alt');
-  lbCap.textContent = CAPTIONS[lbIndex] || '';
-}
-
-function openLB(i) {
-  lbIndex = i;
-  lastFocus = document.activeElement;
-  paintLB();
-  lb.hidden = false;
-  document.body.style.overflow = 'hidden';
-  lbClose.focus();
-}
-
-function closeLB() {
-  lb.hidden = true;
-  document.body.style.overflow = '';
-  if (lastFocus) lastFocus.focus();
-}
-
-function step(n) {
-  lbIndex = (lbIndex + n + shots.length) % shots.length;
-  paintLB();
-}
-
-if (lb && shots.length) {
-  shots.forEach((btn, i) => btn.addEventListener('click', () => openLB(i)));
-
-  lbClose.addEventListener('click', closeLB);
-  lbPrev.addEventListener('click', () => step(-1));
-  lbNext.addEventListener('click', () => step(1));
-  lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
-
-  document.addEventListener('keydown', e => {
-    if (lb.hidden) return;
-    if (e.key === 'Escape')     closeLB();
-    if (e.key === 'ArrowLeft')  step(-1);
-    if (e.key === 'ArrowRight') step(1);
-    if (e.key === 'Tab') {
-      const focusable = [lbClose, lbPrev, lbNext];
-      const idx = focusable.indexOf(document.activeElement);
-      e.preventDefault();
-      const next = e.shiftKey ? idx - 1 : idx + 1;
-      focusable[(next + focusable.length) % focusable.length].focus();
-    }
+  /* dots */
+  items.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'dot';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Photo ' + (i + 1));
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.addEventListener('click', () => go(i));
+    dotBox.appendChild(b);
   });
+  const dots = Array.from(dotBox.children);
+
+  function current() {
+    const mid = slides.scrollLeft + slides.clientWidth / 2;
+    let best = 0, bestD = Infinity;
+    items.forEach((el, i) => {
+      const c = el.offsetLeft + el.offsetWidth / 2;
+      const dist = Math.abs(c - mid);
+      if (dist < bestD) { bestD = dist; best = i; }
+    });
+    return best;
+  }
+
+  function go(i) {
+    const el = items[Math.max(0, Math.min(items.length - 1, i))];
+    slides.scrollTo({
+      left: el.offsetLeft - (slides.clientWidth - el.offsetWidth) / 2,
+      behavior: 'smooth'
+    });
+  }
+
+  function sync() {
+    const i = current();
+    dots.forEach((d, n) => d.setAttribute('aria-selected', n === i ? 'true' : 'false'));
+    prev.style.visibility = i === 0 ? 'hidden' : 'visible';
+    next.style.visibility = i === items.length - 1 ? 'hidden' : 'visible';
+  }
+
+  prev.addEventListener('click', () => go(current() - 1));
+  next.addEventListener('click', () => go(current() + 1));
+
+  slides.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(current() - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+  });
+
+  let t;
+  slides.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(sync, 90); });
+  window.addEventListener('resize', sync);
+  sync();
 }
