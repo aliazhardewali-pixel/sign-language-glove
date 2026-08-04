@@ -1,7 +1,7 @@
 /* =========================================================
    SIGN LANGUAGE TRANSLATOR GLOVE
-   Slider controls. The photos are in index.html, so they
-   display even if this file never loads.
+   Slider controls + lightbox. The photos are in index.html,
+   so they display even if this file never loads.
    ========================================================= */
 
 const slides = document.getElementById('slides');
@@ -63,4 +63,74 @@ if (slides) {
   slides.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(sync, 90); });
   window.addEventListener('resize', sync);
   sync();
+}
+
+/* ---------- lightbox: click any slide photo to see it full size ---------- */
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lbImg');
+const lbCap   = document.getElementById('lbCap');
+const lbClose = document.getElementById('lbClose');
+const lbPrev  = document.getElementById('lbPrev');
+const lbNext  = document.getElementById('lbNext');
+const shots   = Array.from(document.querySelectorAll('.slide img'));
+
+let lbIndex = 0;
+let lastFocus = null;
+
+function paintLB() {
+  const img = shots[lbIndex];
+  lbImg.src = img.getAttribute('src');
+  lbImg.alt = img.getAttribute('alt') || '';
+  const cap = img.closest('.slide').querySelector('figcaption');
+  lbCap.textContent = cap ? cap.textContent : '';
+}
+
+function openLB(i) {
+  lbIndex = i;
+  lastFocus = document.activeElement;
+  paintLB();
+  lb.hidden = false;
+  document.body.style.overflow = 'hidden';
+  lbClose.focus();
+}
+
+function closeLB() {
+  lb.hidden = true;
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+
+function lbStep(n) {
+  lbIndex = (lbIndex + n + shots.length) % shots.length;
+  paintLB();
+}
+
+if (lb && shots.length) {
+  shots.forEach((img, i) => {
+    img.addEventListener('click', () => openLB(i));
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(i); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLB);
+  lbPrev.addEventListener('click', () => lbStep(-1));
+  lbNext.addEventListener('click', () => lbStep(1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+
+  document.addEventListener('keydown', e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape')     closeLB();
+    if (e.key === 'ArrowLeft')  lbStep(-1);
+    if (e.key === 'ArrowRight') lbStep(1);
+    if (e.key === 'Tab') {
+      const f = [lbClose, lbPrev, lbNext];
+      const idx = f.indexOf(document.activeElement);
+      e.preventDefault();
+      const nxt = e.shiftKey ? idx - 1 : idx + 1;
+      f[(nxt + f.length) % f.length].focus();
+    }
+  });
 }
