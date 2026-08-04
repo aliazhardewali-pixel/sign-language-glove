@@ -1,22 +1,21 @@
 /* =========================================================
    SIGN LANGUAGE TRANSLATOR GLOVE
-   Palette is built from the three logos:
-     UOD blue, THM lime, MEDICO green.
+   Palette: MEDICO green.
    Change colours in section 1 only.
    ========================================================= */
 
 /* ---------- 1. TOKENS ---------- */
 :root{
-  --ink:      #0D1A33;   /* deep navy, from the UoD blue */
-  --ink-soft: #3B4763;
-  --steel:    #5F6C85;
-  --paper:    #EEF1F7;
-  --card:     #F8FAFD;
-  --line:     #D5DCE8;
+  --ink:      #0E2118;   /* deep green-black */
+  --ink-soft: #38493F;
+  --steel:    #5B6E62;
+  --paper:    #EFF4F0;
+  --card:     #F8FBF9;
+  --line:     #D3DFD6;
 
-  --uod:      #0A3AD6;   /* University of Duhok blue  */
-  --thm:      #84B819;   /* THM lime                  */
-  --medico:   #37B44E;   /* MEDICO green              */
+  --uod:      #127032;   /* deep MEDICO green, for text and links */
+  --thm:      #37B44E;   /* MEDICO green, decorative              */
+  --medico:   #37B44E;   /* MEDICO green                          */
 
   --display: "Bricolage Grotesque", Georgia, serif;
   --body:    "Public Sans", system-ui, sans-serif;
@@ -63,7 +62,7 @@ a:hover{ color:var(--ink); }
 /* ---------- 4. HERO ---------- */
 .hero{
   background:
-    linear-gradient(180deg, rgba(10,58,214,.16), transparent 60%),
+    linear-gradient(180deg, rgba(55,180,78,.20), transparent 62%),
     var(--ink);
   color:var(--paper);
   padding-block:clamp(2.6rem,9vw,4.6rem);
@@ -77,7 +76,7 @@ a:hover{ color:var(--ink); }
 .hero h1 br{ display:none; }
 .lede{
   font-size:clamp(1.05rem,3.6vw,1.35rem);
-  color:#C3CCDD; max-width:34ch; margin:0;
+  color:#C6D6CB; max-width:34ch; margin:0;
 }
 
 /* ---------- 5. BANDS ---------- */
@@ -142,7 +141,7 @@ td:nth-child(1){ font-weight:600; }
   font-weight:600; font-size:.98rem;
 }
 .parts-drop summary::-webkit-details-marker{ display:none; }
-.parts-drop summary:hover{ background:#E7ECF6; }
+.parts-drop summary:hover{ background:#E4EDE6; }
 .chev{
   width:11px; height:11px; flex:none;
   border-right:2.5px solid var(--uod); border-bottom:2.5px solid var(--uod);
@@ -203,7 +202,7 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
 .s-nav{
   position:absolute; top:clamp(150px,32vw,270px); transform:translateY(-50%);
   width:46px; height:46px; border:0; border-radius:50%; cursor:pointer;
-  background:rgba(13,26,51,.72); color:#fff; font-size:1.9rem; line-height:1;
+  background:rgba(14,33,24,.74); color:#fff; font-size:1.9rem; line-height:1;
   display:grid; place-items:center;
 }
 .s-nav:hover{ background:var(--ink); }
@@ -225,7 +224,7 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
   background:var(--ink); color:#fff; border-color:var(--ink);
   border-left:5px solid var(--thm); margin-bottom:1rem;
 }
-.member.sup .role{ color:#AFBBD1; }
+.member.sup .role{ color:#B3C6B9; }
 .member.sup a{ color:var(--thm); }
 .member.sup a:hover{ color:#fff; }
 .tag{
@@ -240,15 +239,15 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
 /* ---------- 11. FOOTER ---------- */
 footer{ background:var(--ink); color:var(--steel); padding-block:2.6rem; text-align:center; }
 .fine{ font-size:.78rem; line-height:1.7; margin:0 0 .55rem; }
-footer a{ color:#AFBBD1; text-decoration-color:#41506B; }
+footer a{ color:#B3C6B9; text-decoration-color:#3B5244; }
 footer a:hover{ color:#fff; }
 .credit{
-  font-size:.72rem; margin:1.1rem 0 0; color:#79859C;
-  padding-top:.9rem; border-top:1px solid #1E2B47;
+  font-size:.72rem; margin:1.1rem 0 0; color:#7C8F82;
+  padding-top:.9rem; border-top:1px solid #1D3327;
   display:inline-block; min-width:min(320px,80%);
 }
-.credit a{ color:#8E9AB1; }
-.credit a:hover{ color:#C3CCDD; }
+.credit a{ color:#93A699; }
+.credit a:hover{ color:#C6D6CB; }
 
 /* ---------- 12. RESPONSIVE ---------- */
 @media (min-width:620px){
