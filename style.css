@@ -194,8 +194,10 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
   flex:0 0 100%; scroll-snap-align:center; margin:0;
 }
 .slide img{
-  width:100%; height:clamp(300px,64vw,540px); object-fit:cover;
-  display:block; border-radius:14px; background:var(--line);
+  width:100%; height:clamp(320px,70vw,560px);
+  object-fit:contain;            /* show the whole photo, never crop */
+  display:block; border-radius:14px; background:#fff;
+  border:1px solid var(--line); cursor:zoom-in;
 }
 .slide figcaption{ padding:0 .2rem; }
 
@@ -265,3 +267,31 @@ footer a:hover{ color:#fff; }
   html, .slides{ scroll-behavior:auto; }
   *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
 }
+
+/* ---------- 13. LIGHTBOX ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:60;
+  background:rgba(8,20,14,.96);
+  display:flex; align-items:center; justify-content:center; padding:1rem;
+}
+.lightbox[hidden]{ display:none; }
+.lb-fig{ margin:0; max-width:min(1100px,94vw); max-height:90vh; text-align:center; }
+.lb-fig img{
+  max-width:100%; max-height:78vh; object-fit:contain;
+  border-radius:10px; display:block; margin:0 auto; background:#fff;
+}
+#lbCap{ color:#C6D6CB; font-size:.85rem; margin-top:.9rem; }
+.lb-close{
+  position:absolute; top:.8rem; right:.8rem; z-index:2;
+  width:46px; height:46px; font-size:1.9rem; line-height:1;
+  background:rgba(255,255,255,.12); color:#fff;
+  border:0; border-radius:50%; cursor:pointer;
+}
+.lb-nav{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width:48px; height:48px; font-size:2rem; line-height:1;
+  background:rgba(255,255,255,.12); color:#fff;
+  border:0; border-radius:50%; cursor:pointer;
+}
+.lb-prev{ left:.6rem; } .lb-next{ right:.6rem; }
+.lb-close:hover, .lb-nav:hover{ background:var(--medico); }
