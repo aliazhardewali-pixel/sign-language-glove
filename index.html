@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +14,12 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <!-- ============ LOGO STRIP ============ -->
 <div class="logostrip">
@@ -27,14 +27,19 @@
     <img class="lg-uod" src="logo-uod.png" alt="University of Duhok" width="250" height="250">
     <img class="lg-thm" src="logo-thm.png" alt="Technische Hochschule Mittelhessen" width="571" height="190">
     <img class="lg-med" src="logo-medico.webp" alt="MEDICO Erbil International Health Exhibition" width="520" height="138">
+
+    <div class="langsw" role="group" aria-label="Language / اللغة">
+      <button type="button" class="lang-btn is-on" id="langEn" lang="en">English</button>
+      <button type="button" class="lang-btn" id="langAr" lang="ar">العربية</button>
+    </div>
   </div>
 </div>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <h1>Sign Language <br>Translator Glove</h1>
-    <p class="lede">
+    <h1 data-i18n="hero.h1">Sign Language <br>Translator Glove</h1>
+    <p class="lede" data-i18n="hero.lede">
       A wearable glove that reads the shape of your hand and turns it into words —
       written on a phone, and spoken out loud.
     </p>
@@ -46,19 +51,10 @@
 <!-- ============ VIDEO ============ -->
 <section class="band" aria-labelledby="video-h">
   <div class="wrap">
-    <h2 id="video-h">The glove in use</h2>
-    <!--
-      TO ADD THE VIDEO: replace the .video-placeholder div below with:
-      <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                title="Sign Language Translator Glove demonstration"
-                loading="lazy" allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-    -->
+    <h2 id="video-h" data-i18n="video.h">The glove in use</h2>
     <div class="video-placeholder">
-      <p><strong>Demonstration video</strong></p>
-      <p>Coming soon.</p>
+      <p data-i18n="video.title"><strong>Demonstration video</strong></p>
+      <p data-i18n="video.soon">Coming soon.</p>
     </div>
   </div>
 </section>
@@ -66,13 +62,13 @@
 <!-- ============ PROBLEM ============ -->
 <section class="band alt" aria-labelledby="why-h">
   <div class="wrap narrow">
-    <h2 id="why-h">Why we built it</h2>
-    <p>
+    <h2 id="why-h" data-i18n="why.h">Why we built it</h2>
+    <p data-i18n="why.p1">
       A deaf or speech-impaired person can sign fluently and still not be understood, because
       the person across from them never learned to sign. That happens at a hospital reception,
       in a classroom, at a government office — ordinary places, every day.
     </p>
-    <p>
+    <p data-i18n="why.p2">
       Interpreters are not always available and not always wanted. The gap is usually small:
       a handful of words, said quickly, to someone who only needs to understand this once.
       We wanted to close that gap with something a person can simply wear.
@@ -83,23 +79,23 @@
 <!-- ============ HEALTHCARE ============ -->
 <section class="band" aria-labelledby="care-h">
   <div class="wrap">
-    <h2 id="care-h">Why it matters in healthcare</h2>
-    <p class="sub">
+    <h2 id="care-h" data-i18n="care.h">Why it matters in healthcare</h2>
+    <p class="sub" data-i18n="care.sub">
       Outside a hospital, a missed word is inconvenient. Inside one, it changes what care a
       person receives.
     </p>
 
     <ul class="care-list">
-      <li>Improves communication between deaf/mute patients and healthcare providers</li>
-      <li>Reduces misunderstandings during medical consultations</li>
-      <li>Enables faster and more accurate communication in emergencies</li>
-      <li>Increases patient independence and confidence</li>
-      <li>Helps healthcare staff understand patients without always needing a sign language interpreter</li>
-      <li>Supports better patient care and treatment decisions</li>
-      <li>Provides a portable, low-cost assistive technology solution</li>
+      <li data-i18n="care.1">Improves communication between deaf/mute patients and healthcare providers</li>
+      <li data-i18n="care.2">Reduces misunderstandings during medical consultations</li>
+      <li data-i18n="care.3">Enables faster and more accurate communication in emergencies</li>
+      <li data-i18n="care.4">Increases patient independence and confidence</li>
+      <li data-i18n="care.5">Helps healthcare staff understand patients without always needing a sign language interpreter</li>
+      <li data-i18n="care.6">Supports better patient care and treatment decisions</li>
+      <li data-i18n="care.7">Provides a portable, low-cost assistive technology solution</li>
     </ul>
 
-    <p class="note-line">
+    <p class="note-line" data-i18n="care.note">
       This prototype recognizes a small vocabulary and is not a medical device. It shows an
       approach — a wearable that speaks for the patient — rather than a finished clinical tool.
     </p>
@@ -109,33 +105,33 @@
 <!-- ============ HOW IT WORKS ============ -->
 <section class="band alt" aria-labelledby="how-h">
   <div class="wrap">
-    <h2 id="how-h">How it works</h2>
-    <p class="sub">The signal starts as a bend in a finger and ends as a word in two places at once.</p>
+    <h2 id="how-h" data-i18n="how.h">How it works</h2>
+    <p class="sub" data-i18n="how.sub">The signal starts as a bend in a finger and ends as a word in two places at once.</p>
 
     <ol class="chain">
       <li>
-        <span class="chain-tag">Hand</span>
-        <h3>The gesture</h3>
-        <p>Fingers bend. The wrist turns. Both carry meaning.</p>
+        <span class="chain-tag" data-i18n="how.t1">Hand</span>
+        <h3 data-i18n="how.h1">The gesture</h3>
+        <p data-i18n="how.p1">Fingers bend. The wrist turns. Both carry meaning.</p>
       </li>
       <li>
-        <span class="chain-tag">Sense</span>
-        <h3>Five flex sensors + MPU9250</h3>
-        <p>Each flex sensor changes resistance as the finger curls. The MPU9250 reports
+        <span class="chain-tag" data-i18n="how.t2">Sense</span>
+        <h3 data-i18n="how.h2">Five flex sensors + MPU9250</h3>
+        <p data-i18n="how.p2">Each flex sensor changes resistance as the finger curls. The MPU9250 reports
            how the hand is tilted and how it is moving.</p>
       </li>
       <li>
-        <span class="chain-tag">Decide</span>
-        <h3>Arduino Nano</h3>
-        <p>Every sensor value is checked against a calibrated range. When all of them fall
+        <span class="chain-tag" data-i18n="how.t3">Decide</span>
+        <h3 data-i18n="how.h3">Arduino Nano</h3>
+        <p data-i18n="how.p3">Every sensor value is checked against a calibrated range. When all of them fall
            inside the range for one gesture, that gesture is recognized.</p>
       </li>
       <li class="split">
-        <span class="chain-tag">Output</span>
-        <h3>Two channels at once</h3>
+        <span class="chain-tag" data-i18n="how.t4">Output</span>
+        <h3 data-i18n="how.h4">Two channels at once</h3>
         <div class="branches">
-          <p><strong>Seen —</strong> HM-10 Bluetooth Low Energy sends the text to a smartphone.</p>
-          <p><strong>Heard —</strong> a DFPlayer Mini plays the matching audio file through a speaker.</p>
+          <p data-i18n="how.p4a"><strong>Seen —</strong> HM-10 Bluetooth Low Energy sends the text to a smartphone.</p>
+          <p data-i18n="how.p4b"><strong>Heard —</strong> a DFPlayer Mini plays the matching audio file through a speaker.</p>
         </div>
       </li>
     </ol>
@@ -145,33 +141,37 @@
 <!-- ============ MODES ============ -->
 <section class="band" aria-labelledby="modes-h">
   <div class="wrap">
-    <h2 id="modes-h">Two modes, no buttons</h2>
-    <p class="sub">
+    <h2 id="modes-h" data-i18n="mode.h">Two modes, no buttons</h2>
+    <p class="sub" data-i18n="mode.sub">
       The glove switches between modes with a gesture of its own, so the hand never has to
       leave the conversation to press something. A further gesture clears the text.
     </p>
 
     <div class="tables">
       <div class="tbl">
-        <h3>Word mode</h3>
+        <h3 data-i18n="mode.word">Word mode</h3>
         <table>
-          <caption class="vh">Recognized words with Kurdish output and meaning</caption>
-          <thead><tr><th scope="col">English</th><th scope="col">Kurdish</th><th scope="col">Meaning</th></tr></thead>
+          <caption class="vh" data-i18n="mode.cap">Recognized words with Kurdish output and meaning</caption>
+          <thead><tr>
+            <th scope="col" data-i18n="mode.c1">English</th>
+            <th scope="col" data-i18n="mode.c2">Kurdish</th>
+            <th scope="col" data-i18n="mode.c3">Meaning</th>
+          </tr></thead>
           <tbody>
-            <tr><td>Hello</td><td lang="ku">Silav</td><td>Greeting</td></tr>
-            <tr><td>Yes</td><td lang="ku">Bele</td><td>Affirmative</td></tr>
-            <tr><td>No</td><td lang="ku">Nexer</td><td>Negative</td></tr>
-            <tr><td>Stop</td><td lang="ku">Raweste</td><td>Request to stop</td></tr>
-            <tr><td>Wait</td><td lang="ku">Cavere Be</td><td>Request to wait</td></tr>
-            <tr><td>How are you?</td><td>&ndash;</td><td>Asking after someone</td></tr>
+            <tr><td>Hello</td><td lang="ku">Silav</td><td data-i18n="mode.m1">Greeting</td></tr>
+            <tr><td>Yes</td><td lang="ku">Bele</td><td data-i18n="mode.m2">Affirmative</td></tr>
+            <tr><td>No</td><td lang="ku">Nexer</td><td data-i18n="mode.m3">Negative</td></tr>
+            <tr><td>Stop</td><td lang="ku">Raweste</td><td data-i18n="mode.m4">Request to stop</td></tr>
+            <tr><td>Wait</td><td lang="ku">Cavere Be</td><td data-i18n="mode.m5">Request to wait</td></tr>
+            <tr><td>How are you?</td><td>&ndash;</td><td data-i18n="mode.m6">Asking after someone</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="tbl">
-        <h3>Letter mode</h3>
-        <p class="tbl-note">Six American Sign Language letters, shown in sequence so short words can be spelled.</p>
-        <div class="letters">
+        <h3 data-i18n="mode.letter">Letter mode</h3>
+        <p class="tbl-note" data-i18n="mode.lnote">Six American Sign Language letters, shown in sequence so short words can be spelled.</p>
+        <div class="letters" dir="ltr">
           <span>D</span><span>E</span><span>L</span><span>V</span><span>W</span><span>Y</span>
         </div>
       </div>
@@ -182,28 +182,31 @@
 <!-- ============ HARDWARE ============ -->
 <section class="band alt" aria-labelledby="hw-h">
   <div class="wrap">
-    <h2 id="hw-h">What is inside</h2>
-    <p class="sub">Everything except the sensors sits in a clear enclosure strapped to the forearm.</p>
+    <h2 id="hw-h" data-i18n="hw.h">What is inside</h2>
+    <p class="sub" data-i18n="hw.sub">Everything except the sensors sits in a clear enclosure strapped to the forearm.</p>
 
     <details class="parts-drop">
       <summary>
-        <span>See main component list</span>
+        <span data-i18n="hw.open">See main component list</span>
         <span class="chev" aria-hidden="true"></span>
       </summary>
       <table class="parts">
-        <caption class="vh">Components used in the glove</caption>
-        <thead><tr><th scope="col">Component</th><th scope="col">What it does</th></tr></thead>
+        <caption class="vh" data-i18n="hw.cap">Components used in the glove</caption>
+        <thead><tr>
+          <th scope="col" data-i18n="hw.c1">Component</th>
+          <th scope="col" data-i18n="hw.c2">What it does</th>
+        </tr></thead>
         <tbody>
-          <tr><td>Arduino Nano</td><td>Reads every sensor and runs the recognition logic</td></tr>
-          <tr><td>Flex sensors <span class="dim">(one per finger)</span></td><td>Resistance changes with bend angle</td></tr>
-          <tr><td>MPU9250 <span class="dim">(9-axis)</span></td><td>Hand orientation and acceleration, over I<sup>2</sup>C</td></tr>
-          <tr><td>HM-10 Bluetooth LE</td><td>Sends the recognized text to a smartphone</td></tr>
-          <tr><td>DFPlayer Mini + speaker</td><td>Speaks the recognized word aloud</td></tr>
-          <tr><td>MicroSD card</td><td>Holds the audio files for the DFPlayer</td></tr>
-          <tr><td>Li-ion battery <span class="dim">(3.7 V, 700 mAh)</span></td><td>Around seven hours of use per charge</td></tr>
-          <tr><td>MT3608 boost converter</td><td>Steps the battery up to a steady 5 V</td></tr>
-          <tr><td>Power switch, USB-C port</td><td>On/off and charging</td></tr>
-          <tr><td>Right-hand glove</td><td>Carries the sensors and the wiring</td></tr>
+          <tr><td>Arduino Nano</td><td data-i18n="hw.r1">Reads every sensor and runs the recognition logic</td></tr>
+          <tr><td>Flex sensors <span class="dim" data-i18n="hw.n2">(one per finger)</span></td><td data-i18n="hw.r2">Resistance changes with bend angle</td></tr>
+          <tr><td>MPU9250 <span class="dim" data-i18n="hw.n3">(9-axis)</span></td><td data-i18n="hw.r3">Hand orientation and acceleration, over I<sup>2</sup>C</td></tr>
+          <tr><td>HM-10 Bluetooth LE</td><td data-i18n="hw.r4">Sends the recognized text to a smartphone</td></tr>
+          <tr><td>DFPlayer Mini + speaker</td><td data-i18n="hw.r5">Speaks the recognized word aloud</td></tr>
+          <tr><td>MicroSD card</td><td data-i18n="hw.r6">Holds the audio files for the DFPlayer</td></tr>
+          <tr><td>Li-ion battery <span class="dim" data-i18n="hw.n7">(3.7 V, 700 mAh)</span></td><td data-i18n="hw.r7">Around seven hours of use per charge</td></tr>
+          <tr><td>MT3608 boost converter</td><td data-i18n="hw.r8">Steps the battery up to a steady 5 V</td></tr>
+          <tr><td data-i18n="hw.n9">Power switch, USB-C port</td><td data-i18n="hw.r9">On/off and charging</td></tr>
+          <tr><td data-i18n="hw.n10">Right-hand glove</td><td data-i18n="hw.r10">Carries the sensors and the wiring</td></tr>
         </tbody>
       </table>
     </details>
@@ -214,7 +217,7 @@
         <img src="schematic.png?v=2" loading="lazy" width="1600" height="975"
              alt="Circuit schematic showing the Arduino Nano connected to five flex sensors through voltage dividers, an MPU9250 over I2C, an HM-10 Bluetooth module, and a DFPlayer Mini driving a speaker, powered by a 3.7 volt battery through a boost converter.">
       </picture>
-      <figcaption>The full circuit.</figcaption>
+      <figcaption data-i18n="hw.fig">The full circuit.</figcaption>
     </figure>
   </div>
 </section>
@@ -222,51 +225,51 @@
 <!-- ============ PROTOTYPE SLIDES ============ -->
 <section class="band" aria-labelledby="gal-h">
   <div class="wrap">
-    <h2 id="gal-h">The prototype</h2>
+    <h2 id="gal-h" data-i18n="gal.h">The prototype</h2>
 
-    <div class="slider">
+    <div class="slider" dir="ltr">
       <div class="slides" id="slides" tabindex="0" aria-label="Prototype photos, scroll or use arrow keys">
 
         <figure class="slide">
           <picture>
             <img src="shot-01.webp" alt="The glove worn on a hand and forearm, with the clear electronics enclosure and its red power light, on a wooden surface.">
           </picture>
-          <figcaption>The complete system as worn — sensors on the hand, electronics on the forearm.</figcaption>
+          <figcaption data-i18n="gal.1">The complete system as worn — sensors on the hand, electronics on the forearm.</figcaption>
         </figure>
 
         <figure class="slide">
           <picture>
             <img src="shot-02.webp" loading="lazy" alt="Close view of the gloved hand showing a flex sensor running along each finger and the wiring gathered at the cuff.">
           </picture>
-          <figcaption>One flex sensor per finger, wiring gathered at the wrist.</figcaption>
+          <figcaption data-i18n="gal.2">One flex sensor per finger, wiring gathered at the wrist.</figcaption>
         </figure>
 
         <figure class="slide">
           <picture>
             <img src="shot-03.webp" loading="lazy" alt="The glove and the electronics enclosure laid side by side on a wooden surface, showing how the two parts connect.">
           </picture>
-          <figcaption>Glove and enclosure apart — the two halves of the system.</figcaption>
+          <figcaption data-i18n="gal.3">Glove and enclosure apart — the two halves of the system.</figcaption>
         </figure>
 
         <figure class="slide">
           <picture>
             <img src="shot-04.webp" loading="lazy" alt="Abdulqader Masood wearing the glove at the Engineering Design Day exhibition, standing beside the project poster.">
           </picture>
-          <figcaption>Demonstrating the glove at the exhibition.</figcaption>
+          <figcaption data-i18n="gal.4">Demonstrating the glove at the exhibition.</figcaption>
         </figure>
 
         <figure class="slide">
           <picture>
             <img src="shot-poster.webp" loading="lazy" alt="The project poster for Engineering Design Day, showing the abstract, methodology, results, circuit diagram, and ASL alphabet chart for the Sign Language Translator Glove.">
           </picture>
-          <figcaption>The project poster, presented at Engineering Design Day.</figcaption>
+          <figcaption data-i18n="gal.5">The project poster, presented at Engineering Design Day.</figcaption>
         </figure>
 
         <figure class="slide">
           <picture>
             <img src="shot-group.webp" loading="lazy" alt="Abdulqader Masood and Zaid Mahdi with their supervisor Dr. Soleen Jaladat Al-Sofi and department head Dr. Mohammed Subhi Hadi, standing at the exhibition booth with the glove and its display screen.">
           </picture>
-          <figcaption>Abdulqader Masood, Dr. Soleen Jaladat Al-Sofi, Dr. Mohammed Subhi Hadi, and Zaid Mahdi at the exhibition.</figcaption>
+          <figcaption data-i18n="gal.6">Abdulqader Masood, Dr. Soleen Jaladat Al-Sofi, Dr. Mohammed Subhi Hadi, and Zaid Mahdi at the exhibition.</figcaption>
         </figure>
 
       </div>
@@ -281,51 +284,84 @@
 <!-- ============ FUTURE ============ -->
 <section class="band alt" aria-labelledby="next-h">
   <div class="wrap narrow">
-    <h2 id="next-h">Future improvements</h2>
+    <h2 id="next-h" data-i18n="next.h">Future improvements</h2>
     <ul class="next">
-      <li>Support for all 26 letters of the ASL (American Sign Language) alphabet</li>
-      <li>An AI-supported version that learns each wearer instead of using fixed thresholds</li>
-      <li>A left-hand version of the glove</li>
-      <li>Support for more spoken languages</li>
-      <li>Support for local sign languages, such as Kurdish and Arabic sign language</li>
-      <li>A custom PCB with smaller sensors, so the electronics sit flatter and lighter on the arm</li>
-      <li>A dedicated mobile app in place of a general Bluetooth terminal</li>
+      <li data-i18n="next.1">Support for all 26 letters of the ASL (American Sign Language) alphabet</li>
+      <li data-i18n="next.2">An AI-supported version that learns each wearer instead of using fixed thresholds</li>
+      <li data-i18n="next.3">A left-hand version of the glove</li>
+      <li data-i18n="next.4">Support for more spoken languages</li>
+      <li data-i18n="next.5">Support for local sign languages, such as Kurdish and Arabic sign language</li>
+      <li data-i18n="next.6">A custom PCB with smaller sensors, so the electronics sit flatter and lighter on the arm</li>
+      <li data-i18n="next.7">A dedicated mobile app in place of a general Bluetooth terminal</li>
     </ul>
   </div>
 </section>
 
-<!-- ============ TEAM ============ -->
-<section class="band" aria-labelledby="team-h">
+<!-- ============ DOCUMENTS ============ -->
+<section class="band" aria-labelledby="doc-h">
   <div class="wrap">
-    <h2 id="team-h">Who built it</h2>
+    <h2 id="doc-h" data-i18n="doc.h">Project documents</h2>
+    <p class="sub" data-i18n="doc.sub">
+      The written report and the poster, both from Engineering Design Day.
+    </p>
+
+    <div class="docs">
+      <a class="doc" href="report.pdf" target="_blank" rel="noopener">
+        <span class="doc-ico" aria-hidden="true">PDF</span>
+        <span class="doc-txt">
+          <strong data-i18n="doc.1t">Full project report</strong>
+          <span data-i18n="doc.1s">Mini Project Report 2025&ndash;2026 &middot; University of Duhok</span>
+        </span>
+      </a>
+
+      <a class="doc" href="shot-poster.webp" target="_blank" rel="noopener">
+        <span class="doc-ico" aria-hidden="true">IMG</span>
+        <span class="doc-txt">
+          <strong data-i18n="doc.2t">Project poster</strong>
+          <span data-i18n="doc.2s">Presented at Engineering Design Day</span>
+        </span>
+      </a>
+    </div>
+
+    <p class="note-line" data-i18n="doc.note">
+      The report describes the version shown on Design Day. The spoken audio output and the
+      other refinements on this page were added to the glove afterwards.
+    </p>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="band alt" aria-labelledby="team-h">
+  <div class="wrap">
+    <h2 id="team-h" data-i18n="team.h">Who built it</h2>
 
     <div class="member sup">
-      <p class="tag">Supervisor</p>
-      <p class="name">Dr. Soleen Jaladat Al-Sofi</p>
-      <p class="role">Department of Biomedical Engineering — the project was her suggestion</p>
+      <p class="tag" data-i18n="team.sup">Supervisor</p>
+      <p class="name" data-i18n="team.supname">Dr. Soleen Jaladat Al-Sofi</p>
+      <p class="role" data-i18n="team.suprole">Department of Biomedical Engineering — the project was her suggestion</p>
       <p class="reach"><a href="mailto:soleen.alsofi@uod.ac">soleen.alsofi@uod.ac</a></p>
     </div>
 
     <div class="member head">
-      <p class="tag">Head of Department</p>
-      <p class="name">Dr. Mohammed Subhi Hadi</p>
-      <p class="role">Department of Biomedical Engineering</p>
+      <p class="tag" data-i18n="team.head">Head of Department</p>
+      <p class="name" data-i18n="team.headname">Dr. Mohammed Subhi Hadi</p>
+      <p class="role" data-i18n="team.dept">Department of Biomedical Engineering</p>
       <p class="reach"><a href="mailto:mohammed.subhi@uod.ac">mohammed.subhi@uod.ac</a></p>
     </div>
 
     <div class="team">
       <div class="member">
-        <p class="name">Abdulqader Masood</p>
-        <p class="role">Biomedical Engineering student</p>
-        <p class="reach">
+        <p class="name" data-i18n="team.n1">Abdulqader Masood</p>
+        <p class="role" data-i18n="team.student">Biomedical Engineering student</p>
+        <p class="reach" dir="ltr">
           <a href="mailto:abdulkadeermasood@gmail.com">abdulkadeermasood@gmail.com</a>
           <a href="tel:+9647501466457">+964 750 146 6457</a>
         </p>
       </div>
       <div class="member">
-        <p class="name">Zaid Mahdi</p>
-        <p class="role">Biomedical Engineering student</p>
-        <p class="reach">
+        <p class="name" data-i18n="team.n2">Zaid Mahdi</p>
+        <p class="role" data-i18n="team.student2">Biomedical Engineering student</p>
+        <p class="reach" dir="ltr">
           <a href="mailto:zaid.mahdi.ahmed@gmail.com">zaid.mahdi.ahmed@gmail.com</a>
           <a href="tel:+9647518373782">+964 751 837 3782</a>
         </p>
@@ -338,22 +374,22 @@
 
 <footer>
   <div class="wrap">
-    <p class="fine">
-      Mini Project 2025–2026 &middot; Department of Biomedical Engineering,
+    <p class="fine" data-i18n="foot.1">
+      Mini Project 2025&ndash;2026 &middot; Department of Biomedical Engineering,
       College of Engineering, University of Duhok
     </p>
     <p class="fine">
-      <a href="https://www.instagram.com/bio.medical.engineering_" rel="noopener">
+      <a href="https://www.instagram.com/bio.medical.engineering_" rel="noopener" data-i18n="foot.2">
         Department of Biomedical Engineering on Instagram</a>
     </p>
-    <p class="credit">
+    <p class="credit" data-i18n="foot.3">
       Website by <a href="https://aliazhardewali-pixel.github.io/" rel="noopener">Ali Azhar Dewali</a>
     </p>
   </div>
 </footer>
 
 <!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden dir="ltr">
   <button class="lb-close" id="lbClose" aria-label="Close photo viewer">&times;</button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
   <figure class="lb-fig">
@@ -363,7 +399,8 @@
   <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
 </div>
 
-<script src="script.js?v=8"></script>
+<script src="i18n.js?v=1"></script>
+<script src="script.js?v=9"></script>
 <!-- GoatCounter analytics -->
 <script data-goatcounter="https://signglove.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
