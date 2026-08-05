@@ -182,6 +182,18 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
   width:8px; height:8px; border-radius:2px; background:var(--thm);
 }
 
+.care-list{ margin:0; padding:0; list-style:none; }
+.care-list li{
+  padding:.75rem 0 .75rem 2rem; position:relative;
+  border-bottom:1px solid var(--line); font-size:.97rem; color:var(--ink-soft);
+}
+.care-list li:last-child{ border-bottom:0; }
+.care-list li::before{
+  content:"✓"; position:absolute; left:0; top:.72rem;
+  width:20px; height:20px; border-radius:50%; background:var(--medico);
+  color:#fff; font-size:.68rem; font-weight:700; line-height:20px; text-align:center;
+}
+
 /* ---------- 9. SLIDER ---------- */
 .slider{ position:relative; }
 .slides{
@@ -229,6 +241,10 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
 .member.sup .role{ color:#B3C6B9; }
 .member.sup a{ color:var(--thm); }
 .member.sup a:hover{ color:#fff; }
+.member.head{
+  background:var(--card); border:1px solid var(--line);
+  border-left:5px solid var(--uod);
+}
 .tag{
   font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
   text-transform:uppercase; color:var(--medico); margin:0 0 .35rem;
@@ -255,6 +271,7 @@ footer a:hover{ color:#fff; }
 @media (min-width:620px){
   .cards{ grid-template-columns:repeat(2,1fr); }
   .team{ grid-template-columns:repeat(2,1fr); }
+  .member.head{ grid-column:1 / -1; }
   .branches{ grid-template-columns:1fr 1fr; }
   .slide{ flex:0 0 78%; }
 }
