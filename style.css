@@ -331,7 +331,16 @@ footer a:hover{ color:#fff; }
   .langsw{ margin-inline-start:0; }
 }
 
-/* ---------- 15. DOCUMENTS ---------- */
+/* ---------- 15. POSTER ---------- */
+.poster-fig{ margin:0 0 1rem; }
+.poster-fig img{
+  width:100%; max-width:560px; display:block; margin:0 auto;
+  border-radius:14px; border:1px solid var(--line); background:#fff;
+  cursor:zoom-in;
+}
+.poster-fig figcaption{ text-align:center; margin-top:.7rem; font-size:.88rem; color:var(--ink-soft); }
+
+/* ---------- 16. DOCUMENTS ---------- */
 .docs{ display:grid; gap:.9rem; margin-block:1.4rem; }
 @media (min-width:700px){ .docs{ grid-template-columns:1fr 1fr; } }
 .doc{
@@ -349,7 +358,7 @@ footer a:hover{ color:#fff; }
 .doc-txt strong{ font-size:1rem; font-weight:600; }
 .doc-txt span{ font-size:.83rem; color:var(--steel); }
 
-/* ---------- 16. RIGHT-TO-LEFT (ARABIC) ---------- */
+/* ---------- 17. RIGHT-TO-LEFT (ARABIC) ---------- */
 html[lang="ar"] body{
   font-family:"IBM Plex Sans Arabic", var(--body);
   font-size:1.06rem; line-height:1.85;
