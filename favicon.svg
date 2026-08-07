@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sign Language Translator Glove">
+  <rect width="64" height="64" rx="14" fill="#127032"/>
+  <g fill="#fff">
+    <!-- fingers -->
+    <rect x="20.5" y="15.5" width="7" height="24" rx="3.5"/>
+    <rect x="28.5" y="10.5" width="7" height="29" rx="3.5"/>
+    <rect x="36.5" y="11.5" width="7" height="28" rx="3.5"/>
+    <rect x="44.5" y="16.5" width="7" height="23" rx="3.5"/>
+    <!-- palm -->
+    <rect x="19" y="30" width="34" height="25" rx="12"/>
+    <rect x="19" y="30" width="34" height="12" rx="4"/>
+  </g>
+  <!-- thumb -->
+  <path d="M22 44 13 34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+</svg>
