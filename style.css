@@ -227,7 +227,7 @@ figcaption{ font-size:.82rem; color:var(--steel); margin-top:.7rem; }
   width:9px; height:9px; padding:0; border:0; border-radius:50%;
   background:var(--line); cursor:pointer;
 }
-.dot[aria-selected="true"]{ background:var(--medico); transform:scale(1.35); }
+.dot[aria-current="true"]{ background:var(--medico); transform:scale(1.35); }
 
 /* ---------- 10. TEAM ---------- */
 .member{

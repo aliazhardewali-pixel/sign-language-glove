@@ -9,7 +9,7 @@ const prev   = document.getElementById('sPrev');
 const next   = document.getElementById('sNext');
 const dotBox = document.getElementById('dots');
 
-if (slides) {
+if (slides && prev && next && dotBox) {
   const items = Array.from(slides.querySelectorAll('.slide'));
 
   /* dots */
@@ -17,9 +17,8 @@ if (slides) {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'dot';
-    b.setAttribute('role', 'tab');
     b.setAttribute('aria-label', 'Photo ' + (i + 1));
-    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    if (i === 0) b.setAttribute('aria-current', 'true');
     b.addEventListener('click', () => go(i));
     dotBox.appendChild(b);
   });
@@ -46,7 +45,10 @@ if (slides) {
 
   function sync() {
     const i = current();
-    dots.forEach((d, n) => d.setAttribute('aria-selected', n === i ? 'true' : 'false'));
+    dots.forEach((d, n) => {
+      if (n === i) d.setAttribute('aria-current', 'true');
+      else         d.removeAttribute('aria-current');
+    });
     prev.style.visibility = i === 0 ? 'hidden' : 'visible';
     next.style.visibility = i === items.length - 1 ? 'hidden' : 'visible';
   }
