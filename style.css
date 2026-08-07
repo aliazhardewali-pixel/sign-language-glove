@@ -333,10 +333,20 @@ footer a:hover{ color:#fff; }
 
 /* ---------- 15. POSTER ---------- */
 .poster-fig{ margin:0 0 1rem; }
+.poster-fig a{ display:block; }
 .poster-fig img{
-  width:100%; max-width:560px; display:block; margin:0 auto;
+  display:block; margin:0 auto;
+  /* The poster is a 70x100 sheet. Bound it by height, not width, so the whole
+     thing sits on one screen on a phone and on a laptop instead of running off
+     the bottom. Tap or click opens it full size. */
+  width:auto; height:auto;
+  max-width:min(100%, 300px);
+  max-height:62vh;
   border-radius:14px; border:1px solid var(--line); background:#fff;
   cursor:zoom-in;
+}
+@media (min-width:620px){
+  .poster-fig img{ max-width:min(100%, 440px); max-height:68vh; }
 }
 .poster-fig figcaption{ text-align:center; margin-top:.7rem; font-size:.88rem; color:var(--ink-soft); }
 
