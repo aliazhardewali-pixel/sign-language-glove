@@ -38,7 +38,9 @@ from the repository root.
 | `script.js` | Photo slider and lightbox. |
 | `i18n.js` | Arabic strings and the English/Arabic switcher. |
 | `schematic.*`, `shot-*.webp`, `glove-*.*`, `poster-*.webp`, `logo-*` | Images. |
-| `report.pdf` | Written report from the 13th Engineering Design Day. |
+
+The written report is deliberately **not** kept in this repository. It is sent on
+request — the site carries an email link for that. Please do not commit it here.
 
 ### Running it locally
 

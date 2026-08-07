@@ -13,3 +13,6 @@ Desktop.ini
 *.zip
 *.HEIC
 *.heic
+
+# The written report is sent on request, not published here
+report.pdf
