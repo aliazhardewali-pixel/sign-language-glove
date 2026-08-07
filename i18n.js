@@ -39,11 +39,11 @@ const AR = {
   "how.p2": "تتغيّر مقاومة كل حسّاس انثناء مع انحناء الإصبع. أما الـ MPU9250 فيُبلّغ عن ميل اليد وحركتها.",
   "how.t3": "القرار",
   "how.h3": "Arduino Nano",
-  "how.p3": "تُقارَن قراءة كل حسّاس بنطاق مُعايَر. وحين تقع القراءات جميعها ضمن نطاق يمل الفعلٰ في الهاتف.",
-  "how.t4": "المُخرٰذ",
+  "how.p3": "تُقارَن قراءة كل حسّاس بنطاق مُعايَر. وحين تقع القراءات جميعها ضمن نطاق إيماءة واحدة، يتم التعرّف على تلك الإيماءة.",
+  "how.t4": "المُخرَج",
   "how.h4": "قناتان في الوقت نفسه",
-  "how.p4a": "<strong>مقروء —</strong> وحدة HM-10 بتقنية البلوتوت منخفض الطاقة ترسل النص إلى الهاتف.</p>",
-  "how.p4b": "<strong>مسموع —</strong> وحدة DFPlayer Mini تُشغّل الملف الصوتي المطابق عبر مكبّر صوت.</p>",
+  "how.p4a": "<strong>مقروء —</strong> وحدة HM-10 بتقنية البلوتوث منخفض الطاقة ترسل النص إلى الهاتف.",
+  "how.p4b": "<strong>مسموع —</strong> وحدة DFPlayer Mini تُشغّل الملف الصوتي المطابق عبر مكبّر صوت.",
 
   "mode.h": "وضعان، بلا أزرار",
   "mode.sub": "ينتقل القُفّاز بين الوضعين بإيماءة خاصة به، فلا تضطر اليد إلى مغادرة الحديث للضغط على شيء. وإيماءة أخرى تمسح النص.",
@@ -130,6 +130,7 @@ const AR = {
 const META = {
   en: {
     title: "Sign Language Translator Glove — University of Duhok",
+    desc: "A wearable glove that reads hand gestures and turns them into text on a phone and spoken audio. Biomedical Engineering project, University of Duhok, at MEDICO 2026 Erbil.",
     slides: "Prototype photos, scroll or use arrow keys",
     prev: "Previous photo",
     next: "Next photo",
@@ -139,6 +140,7 @@ const META = {
   },
   ar: {
     title: "قُفّاز ترجمة لغة الإشارة — جامعة دهوك",
+    desc: "قُفّاز يُلبَس على اليد، يقرأ إيماءات اليد ويحوّلها إلى نص على الهاتف وصوت مسموع. مشروع الهندسة الطبية الحياتية، جامعة دهوك، في معرض MEDICO 2026 بأربيل.",
     slides: "صور النموذج الأولي، مرّر أو استخدم مفاتيح الأسهم",
     prev: "الصورة السابقة",
     next: "الصورة التالية",
@@ -170,6 +172,8 @@ const META = {
 
     const m = META[ar ? 'ar' : 'en'];
     document.title = m.title;
+    const desc = document.getElementById('metaDesc');
+    if (desc) desc.setAttribute('content', m.desc);
     const set = (id, attr, val) => {
       const el = document.getElementById(id);
       if (el) el.setAttribute(attr, val);
